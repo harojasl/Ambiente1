@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dashboard DevOps</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <header>
+
+    <h1>Dashboard DevOps 🚀</h1>
+
+    <p>
+      Monitoreo básico del sistema
+    </p>
+
+  </header>
+
+  <main>
+
+    <section class="card">
+
+      <h2>Hora del Sistema</h2>
+
+      <p id="hora"></p>
+
+    </section>
+
+    <section class="card">
+
+      <h2>Estado API</h2>
+
+      <p id="estado">
+        Esperando validación...
+      </p>
+
+      <button onclick="verificarAPI()">
+        Verificar API
+      </button>
+
+    </section>
+
+    <section class="card">
+
+      <h2>Logs del Sistema</h2>
+
+      <ul id="logs"></ul>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
