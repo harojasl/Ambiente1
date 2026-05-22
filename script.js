@@ -1,7 +1,6 @@
 const logs = document.getElementById("logs");
 
 function agregarLog(mensaje) {
-
   const item = document.createElement("li");
 
   item.innerHTML =
@@ -11,42 +10,41 @@ function agregarLog(mensaje) {
 }
 
 function actualizarHora() {
-
   document.getElementById("hora").innerHTML =
     new Date().toLocaleTimeString();
 }
 
 setInterval(actualizarHora, 1000);
-
 actualizarHora();
 
 agregarLog("Sistema iniciado");
 
+// 🔥 AHORA USA TU BACKEND REAL
 async function verificarAPI() {
 
-  const estado =
-    document.getElementById("estado");
+  const estado = document.getElementById("estado");
 
-  estado.innerHTML =
-    "Consultando servidor...";
+  estado.innerHTML = "Consultando servidor local...";
 
-  agregarLog("Validando API externa");
+  agregarLog("Consultando backend Node.js en Ubuntu");
 
   try {
 
-    const respuesta =
-      await fetch(
-        "https://jsonplaceholder.typicode.com/todos/1"
-      );
+    const respuesta = await fetch(
+      "http://192.168.1.13:3000/status"
+    );
 
-    const datos =
-      await respuesta.json();
+    const datos = await respuesta.json();
 
     estado.innerHTML =
       "Servidor operativo ✅";
 
     agregarLog(
-      "Respuesta API correcta ID: " + datos.id
+      "Backend OK - status: " + datos.status
+    );
+
+    agregarLog(
+      "Servidor: " + datos.server
     );
 
   } catch (error) {
@@ -54,6 +52,8 @@ async function verificarAPI() {
     estado.innerHTML =
       "Error de conexión ❌";
 
-    agregarLog("Error conectando API");
+    agregarLog("Error conectando backend");
+
+    console.error(error);
   }
 }
