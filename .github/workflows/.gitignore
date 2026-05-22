@@ -1,0 +1,7 @@
+# Ignorar frontend por ahora
+*.html
+*.css
+*.js
+
+# Node modules
+node_modules/
