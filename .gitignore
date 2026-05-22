@@ -1,0 +1,11 @@
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# Frontend temporal
+frontend/
+
+# OS
+.DS_Store
