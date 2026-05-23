@@ -1,23 +1,18 @@
 name: Deploy Ubuntu Server
 
 on:
-
   workflow_dispatch:
 
 jobs:
-
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Configurar SSH
         run: |
-
           mkdir -p ~/.ssh
 
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
@@ -28,9 +23,7 @@ jobs:
 
       - name: Conexion al servidor
         run: |
-
           ssh hrojas1@192.168.1.13 "
-
             echo '======================='
             echo 'DEPLOY DESDE GITHUB'
             echo '======================='
@@ -44,7 +37,6 @@ jobs:
             echo 'Fecha:'
             date
 
-            echo 'Directorio actual:'
+            echo 'PWD:'
             pwd
-
           "
