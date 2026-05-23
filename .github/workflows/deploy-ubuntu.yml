@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -15,7 +16,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh
 
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
 
           chmod 600 ~/.ssh/id_rsa
 
@@ -23,7 +24,7 @@ jobs:
 
       - name: Conexion al servidor
         run: |
-          ssh hrojas1@192.168.1.13 "
+          ssh -i ~/.ssh/id_rsa hrojas1@192.168.1.13 "
             echo '======================='
             echo 'DEPLOY DESDE GITHUB'
             echo '======================='
