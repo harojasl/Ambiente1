@@ -8,36 +8,26 @@ jobs:
     runs-on: self-hosted
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Configurar SSH
+      - name: Verificar servidor
         run: |
-          mkdir -p ~/.ssh
+          echo "======================="
+          echo "DEPLOY DESDE GITHUB"
+          echo "======================="
 
-          printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "Servidor:"
+          hostname
 
-          chmod 600 ~/.ssh/id_rsa
+          echo "Usuario:"
+          whoami
 
-          ssh-keyscan -H 192.168.1.13 >> ~/.ssh/known_hosts
+          echo "Fecha:"
+          date
 
-      - name: Conexion al servidor
-        run: |
-          ssh -i ~/.ssh/id_rsa hrojas1@192.168.1.13 "
-            echo '======================='
-            echo 'DEPLOY DESDE GITHUB'
-            echo '======================='
+          echo "PWD:"
+          pwd
 
-            echo 'Servidor:'
-            hostname
-
-            echo 'Usuario:'
-            whoami
-
-            echo 'Fecha:'
-            date
-
-            echo 'PWD:'
-            pwd
-          "
+          echo "Contenido:"
+          ls -la
